@@ -1,0 +1,6 @@
+reports/
+backups/
+*.clixml
+*.log
+.vscode/
+.idea/
