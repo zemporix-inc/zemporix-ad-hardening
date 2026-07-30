@@ -1,0 +1,12 @@
+{
+  "fixture": true,
+  "accounts": [
+    {
+      "samAccountName": "nazli.simsar",
+      "enabled": true,
+      "groups": [
+        "Hardening-Audit"
+      ]
+    }
+  ]
+}
