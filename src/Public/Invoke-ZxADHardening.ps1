@@ -10,7 +10,8 @@ function Invoke-ZxADHardening {
         if (-not $PSCmdlet.ShouldProcess($finding.Id, 'Etki alanı güvenlik ayarını uygula')) { continue }
         switch ($control.type) {
             'PasswordPolicy' {
-                $args = @{ Identity=(Get-ADDomain -Server $Server).DistinguishedName; Confirm=$false }
+                $domainArgs = if ($Server) { @{ Server=$Server } } else { @{} }
+                $args = @{ Identity=(Get-ADDomain @domainArgs).DistinguishedName; Confirm=$false }
                 if ($Server) { $args.Server = $Server }
                 $args[$control.parameter] = $control.expected
                 Set-ADDefaultDomainPasswordPolicy @args

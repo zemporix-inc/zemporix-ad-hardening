@@ -1,8 +1,9 @@
 function Export-ZxADSnapshot {
     [CmdletBinding()]
     param([Parameter(Mandatory)][string]$Path, [string]$Server)
-    $domain = Get-ADDomain -Server $Server
-    $forest = Get-ADForest -Server $Server
+    $serverArgs = if ($Server) { @{ Server=$Server } } else { @{} }
+    $domain = Get-ADDomain @serverArgs
+    $forest = Get-ADForest @serverArgs
     $snapshot = [ordered]@{
         generatedAt=(Get-Date).ToUniversalTime().ToString('o')
         domain=[ordered]@{ dnsRoot=$domain.DNSRoot; mode=[string]$domain.DomainMode; pdc=$domain.PDCEmulator }
