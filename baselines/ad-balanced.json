@@ -1,0 +1,13 @@
+{
+  "name":"Zemporix AD Dengeli Baseline","version":"1.0.0",
+  "controls":[
+    {"id":"ZX-AD-001","title":"Parola geçmişi en az 24","severity":"High","type":"PasswordPolicy","property":"PasswordHistoryCount","operator":"GreaterOrEqual","expected":24,"parameter":"PasswordHistoryCount","remediable":true},
+    {"id":"ZX-AD-002","title":"Minimum parola uzunluğu en az 14","severity":"High","type":"PasswordPolicy","property":"MinPasswordLength","operator":"GreaterOrEqual","expected":14,"parameter":"MinPasswordLength","remediable":true},
+    {"id":"ZX-AD-003","title":"Hesap kilitleme eşiği en fazla 10","severity":"High","type":"PasswordPolicy","property":"LockoutThreshold","operator":"LessOrEqual","expected":10,"parameter":"LockoutThreshold","remediable":true},
+    {"id":"ZX-AD-004","title":"Geri döndürülebilir şifreleme kapalı","severity":"Critical","type":"PasswordPolicy","property":"ReversibleEncryptionEnabled","operator":"Equal","expected":false,"parameter":"ReversibleEncryptionEnabled","remediable":true},
+    {"id":"ZX-AD-005","title":"Domain Admins doğrudan üye sayısı sınırlı","severity":"High","type":"PrivilegedGroupCount","group":"Domain Admins","operator":"LessOrEqual","expected":5,"remediable":false},
+    {"id":"ZX-AD-006","title":"Etkin ama 90 gündür kullanılmayan bilgisayar yok","severity":"Medium","type":"InactiveComputerCount","days":90,"operator":"LessOrEqual","expected":0,"remediable":false},
+    {"id":"ZX-AD-007","title":"LDAP imzalama zorunlu","severity":"Critical","type":"UnsignedLdapPolicy","operator":"Equal","expected":2,"remediable":true},
+    {"id":"ZX-AD-008","title":"Etki alanı işlev düzeyi modern","severity":"Medium","type":"DomainProperty","property":"DomainMode","operator":"Equal","expected":"Windows2016Domain","remediable":false}
+  ]
+}
